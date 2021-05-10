@@ -3,14 +3,22 @@ import styled from "styled-components";
 
 const Nav = () => {
   return (
-    <div>
+    <Div>
       <H1>Joogle</H1>
-    </div>
+      <H1>GitHub</H1>
+    </Div>
   );
 };
 
+const Div = styled.div`
+  background-color: ${(props) => props.theme.javascriptYellow};
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+`;
+
 const H1 = styled.h1`
-  color: ${(props) => props.theme.javascriptYellow};
+  color: #000;
 `;
 
 export default Nav;
