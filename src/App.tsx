@@ -1,13 +1,14 @@
+import React from "react";
 import Nav from "./components/Nav";
 import Filter from "./components/Filter";
-import Main from "./components/Main";
+import Lib from "./components/Lib";
 
 function App() {
   return (
     <>
       <Nav />
       <Filter />
-      <Main />
+      <Lib />
     </>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
-const Main = () => {
+const Lib = () => {
   return (
     <div>
-      <h1>Main</h1>
+      <h1>Lib</h1>
     </div>
   );
 };
 
-export default Main;
+export default Lib;
