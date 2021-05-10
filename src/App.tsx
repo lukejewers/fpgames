@@ -1,10 +1,14 @@
-import "./App.css";
+import Nav from "./components/Nav";
+import Filter from "./components/Filter";
+import Main from "./components/Main";
 
 function App() {
   return (
-    <div className='App'>
-      <h1>Joogle</h1>
-    </div>
+    <>
+      <Nav />
+      <Filter />
+      <Main />
+    </>
   );
 }
 
