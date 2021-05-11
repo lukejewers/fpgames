@@ -1,0 +1,52 @@
+[
+  {
+    "name": "add",
+    "type": "Number -> Number -> Number",
+    "function": "const add = x => y => x + y",
+    "alternative": null,
+    "description": "Adds together two numbers and returns the result",
+    "application": "add(1)(2)",
+    "return": "3",
+    "link": "subtract"
+  },
+  {
+    "name": "compose",
+    "type": "(a -> b) -> (b -> c) -> a -> c",
+    "function": "const compose = (...fs) => x => […fs].reduceRight((acc, f) => f(acc), x)",
+    "alternative": null,
+    "description": "Adds together two numbers and returns the result",
+    "application": "compose()(2)",
+    "return": "3",
+    "link": "pipe"
+  },
+  {
+    "name": "id",
+    "type": "a -> a",
+    "function": "const id = x => x",
+    "alternative": null,
+    "description": "Returns the value",
+    "application": "id(1)",
+    "return": "1",
+    "link": null
+  },
+  {
+    "name": "map",
+    "type": "(a -> b) -> [a] -> [b]",
+    "function": "const map = f => xs => xs.map(f)",
+    "alternative": "const map = f => xs => xs.reduce((acc, x) => [...acc, f(x)], [])",
+    "description": "Applies a function to each element in an array and return a new array of transformed values",
+    "application": "map(inc)([1,2,3])",
+    "return": "[2,3,4]",
+    "link": null
+  },
+  {
+    "name": "multiply",
+    "type": "number -> number -> number",
+    "function": "const multiply = x => y => x * y",
+    "alternative": null,
+    "description": "Multiplies together two numbers and returns the result",
+    "application": "multiply(2)(3)",
+    "return": "6",
+    "link": null
+  }
+]

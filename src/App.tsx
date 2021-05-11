@@ -2,15 +2,16 @@ import React from "react";
 import Nav from "./components/Nav";
 import Filter from "./components/Filter";
 import Lib from "./components/Lib";
+import data from "./data/functions.json";
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Nav />
-      <Filter />
-      <Lib />
+      <Filter data={data} />
+      <Lib data={data} />
     </>
   );
-}
+};
 
 export default App;
