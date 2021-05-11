@@ -11,6 +11,7 @@ const Nav = () => {
 };
 
 const Div = styled.div`
+  position: sticky;
   background-color: ${(props) => props.theme.javascriptYellow};
   display: flex;
   justify-content: space-between;
