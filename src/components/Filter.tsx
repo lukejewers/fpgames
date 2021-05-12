@@ -16,9 +16,12 @@ const Filter: React.FC<any> = ({ data }) => {
           <span>🔍</span>
         </FilterWrapper>
         <div className='filter__functions'>
-          {data.map((f: any, i: number) => (
-            <FunctionNav key={i}>{f.name}</FunctionNav>
-          ))}
+          {data
+            .map((x: any) => x.name)
+            .filter((x: any) => x.includes(input))
+            .map((f: any, i: number) => (
+              <FunctionNav key={i}>{f}</FunctionNav>
+            ))}
         </div>
       </Wrapper>
     </>
