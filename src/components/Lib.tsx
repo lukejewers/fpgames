@@ -5,7 +5,6 @@ import styled from "styled-components";
 const Lib: React.FC<any> = ({ data }) => {
   return (
     <Wrapper>
-      <h1>Lib</h1>
       {data.map((f: any) => (
         <Function f={f} />
       ))}

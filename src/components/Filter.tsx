@@ -30,6 +30,7 @@ const Filter: React.FC<any> = ({ data }) => {
 
 const Wrapper = styled.div`
   position: sticky;
+  top: 61px;
   height: 100%;
   padding: 0 1rem;
 `;
