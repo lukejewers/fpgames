@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: "Roboto", Sans-Serif;
   };
+ 
 `;
 
 export default GlobalStyles;

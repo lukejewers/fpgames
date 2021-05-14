@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 const Filter: React.FC<any> = ({ data }) => {
@@ -20,7 +20,7 @@ const Filter: React.FC<any> = ({ data }) => {
             .map((x: any) => x.name)
             .filter((x: any) => x.includes(input))
             .map((f: any, i: number) => (
-              <FunctionNavSelectorLink href={`#${f}`}>
+              <FunctionNavSelectorLink>
                 <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
               </FunctionNavSelectorLink>
             ))}

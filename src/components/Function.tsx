@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Function: React.FC<any> = ({ f }) => {
   return (
-    <Container id={`#${f.name}`}>
+    <Container id={f.name}>
       <h1>{f.name}</h1>
       <Type>
         <Bold>{f.name}</Bold> : : {f.type}
