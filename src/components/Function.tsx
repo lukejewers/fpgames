@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { handleScroll } from "../scroll/Scroll";
 
 const Function: React.FC<any> = ({ f }) => {
   return (
@@ -23,7 +24,11 @@ const Function: React.FC<any> = ({ f }) => {
       </Repl>
       {f.link ? (
         <div>
-          See also <FunctionLink>{f.link}</FunctionLink>.
+          See also{" "}
+          <FunctionLink href={`#${f.link}`} onClick={handleScroll}>
+            {f.link}
+          </FunctionLink>
+          .
         </div>
       ) : (
         ""

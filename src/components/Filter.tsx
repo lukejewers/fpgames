@@ -1,18 +1,9 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import { handleScroll } from "../scroll/Scroll";
 
 const Filter: React.FC<any> = ({ data }) => {
   const [input, setInput] = useState("");
-
-  const handleClick = (e: any) => {
-    e.preventDefault();
-    const el = document.querySelector(e.currentTarget.getAttribute("href"))
-      .offsetTop;
-    window.scrollTo({
-      top: el - 72,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <>
@@ -30,7 +21,7 @@ const Filter: React.FC<any> = ({ data }) => {
             .map((x: any) => x.name)
             .filter((x: any) => x.includes(input))
             .map((f: any, i: number) => (
-              <FunctionNavSelectorLink href={`#${f}`} onClick={handleClick}>
+              <FunctionNavSelectorLink href={`#${f}`} onClick={handleScroll}>
                 <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
               </FunctionNavSelectorLink>
             ))}
