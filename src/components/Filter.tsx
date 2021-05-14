@@ -6,7 +6,7 @@ const Filter: React.FC<any> = ({ data }) => {
 
   return (
     <>
-      <Wrapper>
+      <Container>
         <FilterWrapper>
           <Input
             type='text'
@@ -23,16 +23,17 @@ const Filter: React.FC<any> = ({ data }) => {
               <FunctionNav key={i}>{f}</FunctionNav>
             ))}
         </div>
-      </Wrapper>
+      </Container>
     </>
   );
 };
 
-const Wrapper = styled.div`
+const Container = styled.div`
   position: sticky;
   top: 61px;
-  height: 100%;
+  height: 100vh;
   padding: 0 1rem;
+  border-right: 1px solid #e5e5e5;
 `;
 
 const FilterWrapper = styled.div`

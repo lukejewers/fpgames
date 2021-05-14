@@ -5,6 +5,17 @@ const Nav = () => {
   return (
     <Div>
       <h1>Joogle</h1>
+      <p>
+        {">"} Functional Vanilla Js Functions (inspired by{" "}
+        <a href='https://ramdajs.com/docs/#identity' target='_blank'>
+          Ramda
+        </a>{" "}
+        &{" "}
+        <a href='https://hoogle.haskell.org/' target='_blank'>
+          Hoogle
+        </a>
+        )
+      </p>
       <h2>GitHub</h2>
     </Div>
   );
