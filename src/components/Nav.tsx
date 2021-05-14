@@ -27,8 +27,7 @@ const Nav = () => {
 
 const NavContainer = styled.div`
   position: sticky;
-  top: 0;
-  bottom: 0;
+  top: 0px;
   background-color: ${(props) => props.theme.javascriptYellow};
 `;
 
