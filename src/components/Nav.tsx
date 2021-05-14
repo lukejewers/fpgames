@@ -8,13 +8,13 @@ const Nav = () => {
         <h1>Joogle</h1>
         <p>
           {">"} Functional Vanilla Javascript Functions (inspired by{" "}
-          <a href='https://ramdajs.com/docs/#identity' target='_blank'>
+          <NavLink href='https://ramdajs.com/docs/#identity' target='_blank'>
             Ramda
-          </a>{" "}
+          </NavLink>{" "}
           &{" "}
-          <a href='https://hoogle.haskell.org/' target='_blank'>
+          <NavLink href='https://hoogle.haskell.org/' target='_blank'>
             Hoogle
-          </a>
+          </NavLink>
           )
         </p>
         <h3>GitHub</h3>
@@ -37,6 +37,16 @@ const NavItems = styled.div`
   max-width: 950px;
   padding: 0.75rem 2rem;
   margin: auto;
+`;
+
+const NavLink = styled.a`
+  color: #3273dc;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    text-decoration: underline;
+    font-weight: 500;
+  }
 `;
 
 export default Nav;

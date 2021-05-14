@@ -30,10 +30,9 @@ const Filter: React.FC<any> = ({ data }) => {
 
 const Container = styled.div`
   position: sticky;
-  top: 61px;
-  height: 100vh;
+  top: 63px;
+  height: 100%;
   padding: 0 1rem;
-  border-right: 1px solid #e5e5e5;
 `;
 
 const FilterWrapper = styled.div`

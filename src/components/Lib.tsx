@@ -12,6 +12,8 @@ const Lib: React.FC<any> = ({ data }) => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border-left: 1px solid #ccc;
+`;
 
 export default Lib;
