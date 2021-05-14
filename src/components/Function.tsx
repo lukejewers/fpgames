@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Function: React.FC<any> = ({ f }) => {
   return (
-    <Container>
+    <Container id={`#${f.name}`}>
       <h1>{f.name}</h1>
       <Type>
         <Bold>{f.name}</Bold> : : {f.type}
@@ -21,7 +21,13 @@ const Function: React.FC<any> = ({ f }) => {
         </p>
         <p>{f.return}</p>
       </Repl>
-      {f.link ? <div className=''>See also {f.link}</div> : ""}
+      {f.link ? (
+        <div>
+          See also <FunctionLink>{f.link}</FunctionLink>.
+        </div>
+      ) : (
+        ""
+      )}
     </Container>
   );
 };
@@ -57,6 +63,16 @@ const Repl = styled.div`
 const Description = styled.p`
   padding-left: 1rem;
   border-left: 1px solid gainsboro;
+`;
+
+const FunctionLink = styled.a`
+  color: #3273dc;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    font-weight: 500;
+  }
 `;
 
 export default Function;

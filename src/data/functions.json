@@ -55,8 +55,8 @@
     "function": "const subtract = x => y => x - y",
     "alternative": null,
     "description": "Subtracts one number from another and returns the result",
-    "application": "multiply(2)(3)",
-    "return": "6",
+    "application": "subtract(3)(2)",
+    "return": "1",
     "link": null
   }
 ]
