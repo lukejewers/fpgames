@@ -3,34 +3,40 @@ import styled from "styled-components";
 
 const Nav = () => {
   return (
-    <Div>
-      <h1>Joogle</h1>
-      <p>
-        {">"} Functional Vanilla Javascript Functions (inspired by{" "}
-        <a href='https://ramdajs.com/docs/#identity' target='_blank'>
-          Ramda
-        </a>{" "}
-        &{" "}
-        <a href='https://hoogle.haskell.org/' target='_blank'>
-          Hoogle
-        </a>
-        )
-      </p>
-      <h2>GitHub</h2>
-    </Div>
+    <NavContainer>
+      <NavItems>
+        <h1>Joogle</h1>
+        <p>
+          {">"} Functional Vanilla Javascript Functions (inspired by{" "}
+          <a href='https://ramdajs.com/docs/#identity' target='_blank'>
+            Ramda
+          </a>{" "}
+          &{" "}
+          <a href='https://hoogle.haskell.org/' target='_blank'>
+            Hoogle
+          </a>
+          )
+        </p>
+        <h3>GitHub</h3>
+      </NavItems>
+    </NavContainer>
   );
 };
 
-const Div = styled.div`
+const NavContainer = styled.div`
   position: sticky;
   top: 0;
   bottom: 0;
-  left: 0;
   background-color: ${(props) => props.theme.javascriptYellow};
+`;
+
+const NavItems = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 950px;
   padding: 0.75rem 2rem;
+  margin: auto;
 `;
 
 export default Nav;
