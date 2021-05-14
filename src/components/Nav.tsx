@@ -17,7 +17,9 @@ const Nav = () => {
           </NavLink>
           )
         </p>
-        <h3>GitHub</h3>
+        <GitLink href='https://github.com/lukejewers/joogle' target='_blank'>
+          <i className='fab fa-github fa-1x'></i>
+        </GitLink>
       </NavItems>
     </NavContainer>
   );
@@ -42,10 +44,19 @@ const NavItems = styled.div`
 const NavLink = styled.a`
   color: #3273dc;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
   &:hover {
     text-decoration: underline;
     font-weight: 500;
+  }
+`;
+
+const GitLink = styled.a`
+  color: #000;
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
