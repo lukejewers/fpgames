@@ -15,12 +15,12 @@ const Function: React.FC<any> = ({ f }) => {
           <p>{f.alternative}</p>
         </Bold>
       </div>
-      <GreyDiv>
+      <Repl>
         <p>
           {">"} {f.application}
         </p>
         <p>{f.return}</p>
-      </GreyDiv>
+      </Repl>
       {f.link ? <div className=''>See also {f.link}</div> : ""}
     </Container>
   );
@@ -33,7 +33,7 @@ const Container = styled.div`
   margin: 1rem;
   box-shadow: 0 0 0 1px #ccc;
   & > *:not(:last-child) {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -47,7 +47,7 @@ const Bold = styled.span`
   font-weight: 700;
 `;
 
-const GreyDiv = styled.div`
+const Repl = styled.div`
   background-color: #f7f7f7;
   border: 1px solid #ddd;
   border-radius: 0.125rem;

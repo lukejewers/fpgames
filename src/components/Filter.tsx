@@ -20,7 +20,9 @@ const Filter: React.FC<any> = ({ data }) => {
             .map((x: any) => x.name)
             .filter((x: any) => x.includes(input))
             .map((f: any, i: number) => (
-              <FunctionNav key={i}>{f}</FunctionNav>
+              <FunctionNavSelectorLink href={`#${f}`}>
+                <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
+              </FunctionNavSelectorLink>
             ))}
         </div>
       </Container>
@@ -44,12 +46,19 @@ const Input = styled.input`
   padding: 6px 12px;
 `;
 
-const FunctionNav = styled.div`
+const FunctionNavSelector = styled.div`
   cursor: pointer;
+  padding: 5px 15px;
+  color: #000;
+  text-decoration: none;
   &:hover {
     background: #e4e4e4;
-    padding: 0;
   }
+`;
+
+const FunctionNavSelectorLink = styled.a`
+  color: #000;
+  text-decoration: none;
 `;
 
 export default Filter;
