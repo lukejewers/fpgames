@@ -4,7 +4,7 @@
     "type": "Number -> Number -> Number",
     "function": "const add = x => y => x + y",
     "alternative": null,
-    "description": "Adds together two numbers and returns the result",
+    "description": "Returns the result of one number added to another",
     "application": "add(1)(2)",
     "return": "3",
     "link": "subtract"
@@ -41,10 +41,20 @@
   },
   {
     "name": "multiply",
-    "type": "number -> number -> number",
+    "type": "Number -> Number -> Number",
     "function": "const multiply = x => y => x * y",
     "alternative": null,
     "description": "Multiplies together two numbers and returns the result",
+    "application": "multiply(2)(3)",
+    "return": "6",
+    "link": null
+  },
+  {
+    "name": "subtract",
+    "type": "Number -> Number -> Number",
+    "function": "const subtract = x => y => x - y",
+    "alternative": null,
+    "description": "Returns the result of one number subtracted from another",
     "application": "multiply(2)(3)",
     "return": "6",
     "link": null

@@ -6,7 +6,7 @@ const Nav = () => {
     <Div>
       <h1>Joogle</h1>
       <p>
-        {">"} Functional Vanilla Js Functions (inspired by{" "}
+        {">"} Functional Vanilla Javascript Functions (inspired by{" "}
         <a href='https://ramdajs.com/docs/#identity' target='_blank'>
           Ramda
         </a>{" "}
