@@ -4,7 +4,7 @@
     "type": "Number -> Number -> Number",
     "function": "const add = x => y => x + y",
     "alternative": null,
-    "description": "Returns the result of one number added to another",
+    "description": "Adds one number to another and returns the result",
     "application": "add(1)(2)",
     "return": "3",
     "link": "subtract"
@@ -54,7 +54,7 @@
     "type": "Number -> Number -> Number",
     "function": "const subtract = x => y => x - y",
     "alternative": null,
-    "description": "Returns the result of one number subtracted from another",
+    "description": "Subtracts one number from another and returns the result",
     "application": "multiply(2)(3)",
     "return": "6",
     "link": null
