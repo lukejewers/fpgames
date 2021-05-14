@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Helvetica, Sans-Serif;
+    font-family: "Roboto", Sans-Serif;
   }
 `;
 

@@ -24,7 +24,7 @@
     "type": "a -> a",
     "function": "const id = x => x",
     "alternative": null,
-    "description": "Returns the value",
+    "description": "Returns the argument supplied",
     "application": "id(1)",
     "return": "1",
     "link": null
@@ -34,7 +34,7 @@
     "type": "(a -> b) -> [a] -> [b]",
     "function": "const map = f => xs => xs.map(f)",
     "alternative": "const map = f => xs => xs.reduce((acc, x) => [...acc, f(x)], [])",
-    "description": "Applies a function to each element in an array and return a new array of transformed values",
+    "description": "Applies a function to each element in an array and returns a new array of transformed values",
     "application": "map(inc)([1,2,3])",
     "return": "[2,3,4]",
     "link": null
