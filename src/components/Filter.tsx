@@ -4,6 +4,16 @@ import styled from "styled-components";
 const Filter: React.FC<any> = ({ data }) => {
   const [input, setInput] = useState("");
 
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    const el = document.querySelector(e.currentTarget.getAttribute("href"))
+      .offsetTop;
+    window.scrollTo({
+      top: el - 72,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Container>
@@ -20,7 +30,7 @@ const Filter: React.FC<any> = ({ data }) => {
             .map((x: any) => x.name)
             .filter((x: any) => x.includes(input))
             .map((f: any, i: number) => (
-              <FunctionNavSelectorLink>
+              <FunctionNavSelectorLink href={`#${f}`} onClick={handleClick}>
                 <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
               </FunctionNavSelectorLink>
             ))}
@@ -42,9 +52,6 @@ const FilterWrapper = styled.div`
   margin-right: 1rem;
   border: 1px solid #ccc;
   border-radius: 3px;
-  &:focus {
-    box-shadow: 5px 5px 15px 5px #000000 !important;
-  }
 `;
 
 const Input = styled.input`
@@ -58,7 +65,7 @@ const Input = styled.input`
   }
 `;
 
-const FunctionNavSelector = styled.div`
+const FunctionNavSelector = styled.p`
   cursor: pointer;
   padding: 5px 12px;
   color: #000;
