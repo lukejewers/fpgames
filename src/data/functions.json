@@ -11,13 +11,23 @@
   },
   {
     "name": "compose",
-    "type": "(a -> b) -> (b -> c) -> a -> c",
-    "function": "const compose = (...fs) => x => […fs].reduceRight((acc, f) => f(acc), x)",
+    "type": "(b -> c) -> (a -> b) -> a -> c",
+    "function": "const compose = (...fs) => x => [...fs].reduceRight((acc, f) => f(acc), x)",
     "alternative": null,
-    "description": "Adds together two numbers and returns the result",
-    "application": "compose()(2)",
-    "return": "3",
+    "description": "Successively applies a list of functions to an argument from right to left, where the output of each function application is the input of the next",
+    "application": "compose(add(1), multiply(2))(3)",
+    "return": "7",
     "link": "pipe"
+  },
+  {
+    "name": "head",
+    "type": "[a] -> a",
+    "function": "const head = xs => xs.length ? xs[0] : undefined",
+    "alternative": "const head = ([x,...xs]) =>  x",
+    "description": "Returns the first element of an array",
+    "application": "head([1,2,3])",
+    "return": "1",
+    "link": null
   },
   {
     "name": "id",
@@ -48,6 +58,16 @@
     "application": "multiply(2)(3)",
     "return": "6",
     "link": null
+  },
+  {
+    "name": "pipe",
+    "type": "(a -> b) -> (b -> c) -> a -> c",
+    "function": "const pipe = (...fs) => x => [...fs].reduce((acc, f) => f(acc), x)",
+    "alternative": null,
+    "description": "Successively applies a list of functions to an argument from left to right, where the output of each function application is the input of the next",
+    "application": "compose(add(1), multiply(2))(3)",
+    "return": "8",
+    "link": "compose"
   },
   {
     "name": "subtract",
