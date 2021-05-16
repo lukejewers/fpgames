@@ -12,7 +12,7 @@
   {
     "name": "compose",
     "type": "(b -> c) -> (a -> b) -> a -> c",
-    "function": "const compose = (...fs) => x => [...fs].reduceRight((acc, f) => f(acc), x)",
+    "function": "const compose = (...fs) => x => fs.reduceRight((acc, f) => f(acc), x)",
     "alternative": null,
     "description": "Successively applies a list of functions to an argument from right to left, where the output of each function application is the input to the next",
     "application": "compose(add(1), multiply(2))(3)",
@@ -72,10 +72,10 @@
   {
     "name": "pipe",
     "type": "(a -> b) -> (b -> c) -> a -> c",
-    "function": "const pipe = (...fs) => x => [...fs].reduce((acc, f) => f(acc), x)",
+    "function": "const pipe = (...fs) => x => fs.reduce((acc, f) => f(acc), x)",
     "alternative": null,
     "description": "Successively applies a list of functions to an argument from left to right, where the output of each function application is the input to the next",
-    "application": "compose(add(1), multiply(2))(3)",
+    "application": "pipe(add(1), multiply(2))(3)",
     "return": "8",
     "link": "compose"
   },
