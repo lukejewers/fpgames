@@ -23,11 +23,11 @@
     "name": "head",
     "type": "[a] -> a",
     "function": "const head = xs => xs.length ? xs[0] : undefined",
-    "alternative": "const head = ([x,...xs]) =>  x",
+    "alternative": "const head = ([x, ...xs]) =>  x",
     "description": "Returns the first element of an array",
     "application": "head([1,2,3])",
     "return": "1",
-    "link": null
+    "link": "last"
   },
   {
     "name": "id",
@@ -37,6 +37,16 @@
     "description": "Returns the argument supplied",
     "application": "id(1)",
     "return": "1",
+    "link": null
+  },
+  {
+    "name": "last",
+    "type": "[a] -> a",
+    "function": "const last = xs => 0 < xs.length ? xs.slice(-1)[0] : undefined",
+    "alternative": null,
+    "description": "Returns the last element in an array",
+    "application": "last([1,2,3])",
+    "return": "3",
     "link": null
   },
   {
@@ -87,6 +97,16 @@
     "description": "Subtracts one number from another and returns the result",
     "application": "subtract(3)(2)",
     "return": "1",
-    "link": null
+    "link": "add"
+  },
+  {
+    "name": "tail",
+    "type": "[a] -> [a]",
+    "function": "const tail = xs => xs.length ? xs.slice(-(xs.length - 1)) : undefined",
+    "alternative": "const tail = ([x, ...xs]) =>  xs",
+    "description": "Returns all elements in an array except the first",
+    "application": "tail([1,2,3,4])",
+    "return": "[2,3,4]",
+    "link": "head"
   }
 ]
