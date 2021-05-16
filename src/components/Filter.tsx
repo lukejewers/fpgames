@@ -35,6 +35,7 @@ const Container = styled.div`
   position: sticky;
   top: 63px;
   height: 100%;
+  width: auto;
 `;
 
 const FilterWrapper = styled.div`
@@ -56,12 +57,12 @@ const Input = styled.input`
   }
 `;
 
-const FilterFunctions = styled.div`
-  overflow-y: scroll;
-  height: 100%;
+const FilterFunctions = styled.ul`
+  height: calc(100vh - 160px);
+  overflow-y: auto;
 `;
 
-const FunctionNavSelector = styled.p`
+const FunctionNavSelector = styled.li`
   cursor: pointer;
   padding: 5px 12px;
   color: #000;

@@ -10,8 +10,18 @@
     "link": "subtract"
   },
   {
+    "name": "and",
+    "type": "a -> a -> Bool",
+    "function": "const and = x => y => x && y",
+    "alternative": null,
+    "description": "Adds one number to another and returns the result",
+    "application": "and(True)(False)",
+    "return": "False",
+    "link": null
+  },
+  {
     "name": "append",
-    "type": "[a] -> [a] -> [a]",
+    "type": "a -> [a] -> [a]",
     "function": "const append = x => xs => [...xs, x]",
     "alternative": "const append = x => xs => [...xs].concat(x)",
     "description": "Appends an element onto the end of an array",
@@ -48,6 +58,26 @@
     "application": "elem(1)([1,2,3])",
     "return": "True",
     "link": "notElem"
+  },
+  {
+    "name": "enumFromTo",
+    "type": "a -> a -> [a]",
+    "function": "const enumFromTo = m => n => Array.from({length: Math.floor(n - m) + 1 }, (_, i) => m + i)",
+    "alternative": null,
+    "description": "Returns boolean value whether element is in array",
+    "application": "enumFromTo(1)(10)",
+    "return": "[1,2,3,4,5,6,7,8,9,10]",
+    "link": null
+  },
+  {
+    "name": "eq",
+    "type": "a -> a -> Bool",
+    "function": "const eq = x => y => x == y",
+    "alternative": null,
+    "description": "Returns boolean value whether element is in array",
+    "application": "eq(1)(1)",
+    "return": "True",
+    "link": null
   },
   {
     "name": "flip",
