@@ -110,9 +110,19 @@
     "link": null
   },
   {
+    "name": "init",
+    "type": "[a] -> [a]",
+    "function": "const init = xs => xs.slice(0, xs.length - 1)",
+    "alternative": "const init = xs => xs.reduce((acc,x,i,arr) => i < arr.length -1 ? acc.concat(x) : acc, [])",
+    "description": "Returns the array provided without its last element",
+    "application": "init([1,2,3])",
+    "return": "[1,2]",
+    "link": null
+  },
+  {
     "name": "last",
     "type": "[a] -> a",
-    "function": "const last = xs => 0 < xs.length ? xs.slice(-1)[0] : undefined",
+    "function": "const last = xs => xs.length ? xs.slice(-1)[0] : undefined",
     "alternative": null,
     "description": "Returns the last element in an array",
     "application": "last([1,2,3])",
@@ -198,5 +208,15 @@
     "application": "tail([1,2,3,4])",
     "return": "[2,3,4]",
     "link": "head"
+  },
+  {
+    "name": "zip",
+    "type": "[a] -> [b] -> [(a,b)]",
+    "function": "const zip = ([xs,ys]) => xs.map((x,i) => [x,ys[i]])",
+    "alternative": null,
+    "description": "Takes an array of two arrays and returns an array of tuples whose elements are of corresponding index position",
+    "application": "zip([[1,2,3,4],[5,6,7,8]])",
+    "return": "[[1,5],[2,6],[3,7],[4,8]]",
+    "link": null
   }
 ]

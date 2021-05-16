@@ -10,12 +10,12 @@ const Function: React.FC<any> = ({ f }) => {
         <Bold>{f.name}</Bold> : : {f.type}
       </Type>
       <Description>{f.description}</Description>
-      <div>
+      <FunctionWrapper>
         <Bold>
           <p>{f.function}</p>
           <p>{f.alternative}</p>
         </Bold>
-      </div>
+      </FunctionWrapper>
       <Repl>
         <p>
           {">"} {f.application}
@@ -57,6 +57,8 @@ const Type = styled.div`
 const Bold = styled.span`
   font-weight: 700;
 `;
+
+const FunctionWrapper = styled.div``;
 
 const Repl = styled.div`
   background-color: #f7f7f7;
