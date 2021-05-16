@@ -62,8 +62,8 @@
   {
     "name": "nub",
     "type": "[a] -> [a]",
-    "function": "const nub = xs => [...new Set(xs)]",
-    "alternative": "const nub = xs => xs.filter((x, i) => xs.indexOf(x) === i)",
+    "function": "const nub = xs => xs.filter((x, i) => xs.indexOf(x) === i)",
+    "alternative": "const nub = xs => [...new Set(xs)]",
     "description": "Removes duplicate elements from a list",
     "application": "nub([1,2,2,3,3,3])",
     "return": "[1,2,3]",
