@@ -57,10 +57,10 @@ const Input = styled.input`
 `;
 
 const FilterFunctions = styled.div`
-  position: sticky;
+  overflow-y: scroll;
   height: 100%;
-  top: 0;
 `;
+
 const FunctionNavSelector = styled.p`
   cursor: pointer;
   padding: 5px 12px;

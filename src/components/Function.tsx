@@ -39,7 +39,7 @@ const Function: React.FC<any> = ({ f }) => {
 
 const Container = styled.div`
   display: block;
-  width: 100%;
+  width: auto;
   padding: 1rem;
   margin: 1rem;
   box-shadow: 0 0 0 1px #ccc;
