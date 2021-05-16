@@ -14,7 +14,7 @@
     "type": "(b -> c) -> (a -> b) -> a -> c",
     "function": "const compose = (...fs) => x => [...fs].reduceRight((acc, f) => f(acc), x)",
     "alternative": null,
-    "description": "Successively applies a list of functions to an argument from right to left, where the output of each function application is the input of the next",
+    "description": "Successively applies a list of functions to an argument from right to left, where the output of each function application is the input to the next",
     "application": "compose(add(1), multiply(2))(3)",
     "return": "7",
     "link": "pipe"
@@ -60,11 +60,21 @@
     "link": null
   },
   {
+    "name": "nub",
+    "type": "[a] -> [a]",
+    "function": "const nub = xs => xs.filter((x, i) => xs.indexOf(x) === i)",
+    "alternative": null,
+    "description": "Removes duplicate elements from a list",
+    "application": "nub([1,2,2,3,3,3])",
+    "return": "[1,2,3]",
+    "link": null
+  },
+  {
     "name": "pipe",
     "type": "(a -> b) -> (b -> c) -> a -> c",
     "function": "const pipe = (...fs) => x => [...fs].reduce((acc, f) => f(acc), x)",
     "alternative": null,
-    "description": "Successively applies a list of functions to an argument from left to right, where the output of each function application is the input of the next",
+    "description": "Successively applies a list of functions to an argument from left to right, where the output of each function application is the input to the next",
     "application": "compose(add(1), multiply(2))(3)",
     "return": "8",
     "link": "compose"
