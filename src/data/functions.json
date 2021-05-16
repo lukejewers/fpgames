@@ -10,6 +10,26 @@
     "link": "subtract"
   },
   {
+    "name": "append",
+    "type": "[a] -> [a] -> [a]",
+    "function": "const append = x => xs => [...xs, x]",
+    "alternative": "const append = x => xs => [...xs].concat(x)",
+    "description": "Appends an element onto the end of an array",
+    "application": "append(1)([1,2,3])",
+    "return": "[1,2,3,1]",
+    "link": null
+  },
+  {
+    "name": "both",
+    "type": "(a -> Bool) -> (a -> Bool) -> Bool",
+    "function": "const both = f => g => x => f(x) && g(x)",
+    "alternative": null,
+    "description": "Returns the && of the boolean results of two supplied function applications",
+    "application": "both(x => x > 1)(x => x < 10)(5)",
+    "return": "True",
+    "link": null
+  },
+  {
     "name": "compose",
     "type": "(b -> c) -> (a -> b) -> a -> c",
     "function": "const compose = (...fs) => x => fs.reduceRight((acc, f) => f(acc), x)",
@@ -18,6 +38,26 @@
     "application": "compose(add(1), multiply(2))(3)",
     "return": "7",
     "link": "pipe"
+  },
+  {
+    "name": "elem",
+    "type": "a -> [a] -> Bool",
+    "function": "const elem = x => xs => xs.indexOf(x) !== -1",
+    "alternative": "const notElem = x => xs => xs.includes(x)",
+    "description": "Returns boolean value whether element is in array",
+    "application": "elem(1)([1,2,3])",
+    "return": "True",
+    "link": "notElem"
+  },
+  {
+    "name": "flip",
+    "type": "(a -> b -> c) -> b -> a -> c",
+    "function": "const flip = f => x => y => f(y)(x)",
+    "alternative": null,
+    "description": "Flips the order of arguments",
+    "application": "flip(x => y => x / y)(2)(4)",
+    "return": "2",
+    "link": null
   },
   {
     "name": "head",
@@ -50,6 +90,16 @@
     "link": null
   },
   {
+    "name": "length",
+    "type": "[a] -> Number",
+    "function": "const length = xs => xs.length",
+    "alternative": "const length = xs => xs.map(x => x = 1).reduce((acc,x) => acc + x)",
+    "description": "Returns the length of an array",
+    "application": "length([1,2,3])",
+    "return": "3",
+    "link": null
+  },
+  {
     "name": "map",
     "type": "(a -> b) -> [a] -> [b]",
     "function": "const map = f => xs => xs.map(f)",
@@ -68,6 +118,16 @@
     "application": "multiply(2)(3)",
     "return": "6",
     "link": null
+  },
+  {
+    "name": "notElem",
+    "type": "a -> [a] -> Bool",
+    "function": "const notElem = x => xs => xs.indexOf(x) === -1",
+    "alternative": "const notElem = x => xs => !xs.includes(x)",
+    "description": "Returns boolean value whether element is not in array",
+    "application": "notElem(1)([2,3,4])",
+    "return": "True",
+    "link": "elem"
   },
   {
     "name": "nub",

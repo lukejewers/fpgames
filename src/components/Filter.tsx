@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
 
@@ -16,7 +16,7 @@ const Filter: React.FC<any> = ({ data }) => {
           ></Input>
           <MagnifyingGlass>🔍</MagnifyingGlass>
         </FilterWrapper>
-        <div className='filter__functions'>
+        <FilterFunctions>
           {data
             .map((x: any) => x.name)
             .filter((x: any) => x.includes(input))
@@ -25,7 +25,7 @@ const Filter: React.FC<any> = ({ data }) => {
                 <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
               </FunctionNavSelectorLink>
             ))}
-        </div>
+        </FilterFunctions>
       </Container>
     </>
   );
@@ -56,6 +56,11 @@ const Input = styled.input`
   }
 `;
 
+const FilterFunctions = styled.div`
+  position: sticky;
+  height: 100%;
+  top: 0;
+`;
 const FunctionNavSelector = styled.p`
   cursor: pointer;
   padding: 5px 12px;
