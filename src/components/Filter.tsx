@@ -58,7 +58,7 @@ const Input = styled.input`
 `;
 
 const FilterFunctions = styled.ul`
-  height: calc(100vh - 160px);
+  height: calc(100vh - 135px);
   overflow-y: auto;
 `;
 
