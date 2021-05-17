@@ -14,7 +14,7 @@
     "type": "a -> a -> Bool",
     "function": "const and = x => y => x && y",
     "alternative": null,
-    "description": "Adds one number to another and returns the result",
+    "description": "Returns the conjunction of two booleans",
     "application": "and(True)(False)",
     "return": "False",
     "link": null
@@ -34,7 +34,7 @@
     "type": "(a -> Bool) -> (a -> Bool) -> Bool",
     "function": "const both = f => g => x => f(x) && g(x)",
     "alternative": null,
-    "description": "Returns the && of the boolean results of two supplied function applications",
+    "description": "Returns the conjunction of the boolean results of two supplied function applications",
     "application": "both(x => x > 1)(x => x < 10)(5)",
     "return": "True",
     "link": null
@@ -54,7 +54,7 @@
     "type": "a -> [a] -> Bool",
     "function": "const elem = x => xs => xs.indexOf(x) !== -1",
     "alternative": "const notElem = x => xs => xs.includes(x)",
-    "description": "Returns boolean value whether element is in array",
+    "description": "Returns boolean value as to whether element is in array",
     "application": "elem(1)([1,2,3])",
     "return": "True",
     "link": "notElem"
@@ -64,7 +64,7 @@
     "type": "a -> a -> [a]",
     "function": "const enumFromTo = m => n => Array.from({length: Math.floor(n - m) + 1 }, (_, i) => m + i)",
     "alternative": null,
-    "description": "Returns boolean value whether element is in array",
+    "description": "Enumerates a range of values in an array from given start and end arguments",
     "application": "enumFromTo(1)(10)",
     "return": "[1,2,3,4,5,6,7,8,9,10]",
     "link": null
@@ -74,7 +74,7 @@
     "type": "a -> a -> Bool",
     "function": "const eq = x => y => x == y",
     "alternative": null,
-    "description": "Returns boolean value whether element is in array",
+    "description": "Returns boolean value as to whether element is in array",
     "application": "eq(1)(1)",
     "return": "True",
     "link": null
@@ -114,7 +114,7 @@
     "type": "[a] -> [a]",
     "function": "const init = xs => xs.slice(0, xs.length - 1)",
     "alternative": "const init = xs => xs.reduce((acc,x,i,arr) => i < arr.length -1 ? acc.concat(x) : acc, [])",
-    "description": "Returns the array provided without its last element",
+    "description": "Returns the array supplied without its last element",
     "application": "init([1,2,3])",
     "return": "[1,2]",
     "link": null
@@ -164,7 +164,7 @@
     "type": "a -> [a] -> Bool",
     "function": "const notElem = x => xs => xs.indexOf(x) === -1",
     "alternative": "const notElem = x => xs => !xs.includes(x)",
-    "description": "Returns boolean value whether element is not in array",
+    "description": "Returns boolean value as to whether element is not in array",
     "application": "notElem(1)([2,3,4])",
     "return": "True",
     "link": "elem"
@@ -204,7 +204,7 @@
     "type": "[a] -> [a]",
     "function": "const tail = xs => xs.length ? xs.slice(-(xs.length - 1)) : undefined",
     "alternative": "const tail = ([x, ...xs]) =>  xs",
-    "description": "Returns all elements in an array except the first",
+    "description": "Returns supplied array without the first element",
     "application": "tail([1,2,3,4])",
     "return": "[2,3,4]",
     "link": "head"

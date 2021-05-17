@@ -10,13 +10,12 @@ const Function: React.FC<any> = ({ f }) => {
         <Bold>{f.name}</Bold> : : {f.type}
       </Type>
       <Description>{f.description}</Description>
-      <FunctionWrapper>
-        <Bold>
+      <Repl>
+        <FunctionWrapper>
           <p>{f.function}</p>
           <p>{f.alternative}</p>
-        </Bold>
-      </FunctionWrapper>
-      <Repl>
+        </FunctionWrapper>
+        <br />
         <p>
           {">"} {f.application}
         </p>
@@ -61,8 +60,7 @@ const Bold = styled.span`
 const FunctionWrapper = styled.div``;
 
 const Repl = styled.div`
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
+  background-color: #f6f8fa;
   border-radius: 0.125rem;
   padding: 0.5rem 1rem;
 `;
