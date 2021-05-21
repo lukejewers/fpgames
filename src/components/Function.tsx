@@ -12,12 +12,27 @@ const Function: React.FC<any> = ({ f }) => {
       <Description>{f.description}</Description>
       <Repl>
         <FunctionWrapper>
-          <p>{f.function}</p>
-          <p>{f.alternative}</p>
+          {f.alternative === null ? (
+            <>
+              <p>
+                <Const>const</Const> {f.name} = {f.function}
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                <Const>let</Const> {f.name} = {f.function}
+              </p>
+              <p>
+                <Const>let</Const> {f.name} = {f.alternative}
+              </p>
+            </>
+          )}
         </FunctionWrapper>
         <br />
         <p>
-          {">"} {f.application}
+          {">"} {f.name}
+          {f.arguments}
         </p>
         <p>{f.return}</p>
       </Repl>
@@ -58,6 +73,10 @@ const Bold = styled.span`
 `;
 
 const FunctionWrapper = styled.div``;
+
+const Const = styled.span`
+  color: #d73a49;
+`;
 
 const Repl = styled.div`
   background-color: #f6f8fa;
