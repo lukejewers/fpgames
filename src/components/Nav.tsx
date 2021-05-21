@@ -5,7 +5,12 @@ const Nav = () => {
   return (
     <NavContainer>
       <NavItems>
-        <h1>Joogle</h1>
+        <h1
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={{ cursor: "pointer" }}
+        >
+          Joogle
+        </h1>
         <p>
           {">"} Functional Vanilla Javascript Functions (inspired by{" "}
           <NavLink href='https://ramdajs.com/docs/#identity' target='_blank'>
