@@ -31,10 +31,12 @@ const Function: React.FC<any> = ({ f }) => {
         </FunctionWrapper>
         <br />
         <p>
-          {">"} {f.name}
+          <Arrow>{">"}</Arrow> <FunctionName>{f.name}</FunctionName>
           {f.arguments}
         </p>
-        <p>{f.return}</p>
+        <p>
+          <Return>{f.return}</Return>
+        </p>
       </Repl>
       {f.link ? (
         <div>
@@ -76,6 +78,17 @@ const FunctionWrapper = styled.div``;
 
 const Const = styled.span`
   color: #d73a49;
+`;
+
+const Arrow = styled.span`
+  color: #245cc5;
+`;
+const FunctionName = styled.span`
+  color: #6f42c1;
+`;
+
+const Return = styled.span`
+  color: #274d79;
 `;
 
 const Repl = styled.div`
