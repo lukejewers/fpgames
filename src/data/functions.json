@@ -40,6 +40,16 @@
     "link": null
   },
   {
+    "name": "chunksOf",
+    "type": "Number -> [a] -> [[a]]",
+    "function": "x => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
+    "alternative": null,
+    "description": "Splits an arary into chunks of the supplied length ",
+    "arguments": "(2)(['a','b','c','d'])",
+    "return": "[['a','b'],['c','d']]",
+    "link": null
+  },
+  {
     "name": "compose",
     "type": "(b -> c) -> (a -> b) -> a -> c",
     "function": "(...fs) => x => fs.reduceRight((acc, f) => f(acc), x)",
@@ -130,6 +140,16 @@
     "link": null
   },
   {
+    "name": "k",
+    "type": "a -> b -> a",
+    "function": "x => _ => x",
+    "alternative": null,
+    "description": "Returns the first argument supplied",
+    "arguments": "(1)(2)",
+    "return": "1",
+    "link": null
+  },
+  {
     "name": "last",
     "type": "[a] -> a",
     "function": "xs => xs.length ? xs.slice(-1)[0] : undefined",
@@ -198,6 +218,16 @@
     "arguments": "(add(1), multiply(2))(3)",
     "return": "8",
     "link": "compose"
+  },
+  {
+    "name": "prop",
+    "type": "(a -> b) -> (b -> c) -> a -> c",
+    "function": "p => o => o[p]",
+    "alternative": null,
+    "description": "Returns a value that when supplied an object returns the indicated property of that object",
+    "arguments": "('x')({x: 1})",
+    "return": "1",
+    "link": null
   },
   {
     "name": "subtract",
