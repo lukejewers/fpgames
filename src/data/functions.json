@@ -50,6 +50,16 @@
     "link": "pipe"
   },
   {
+    "name": "cons",
+    "type": "a -> [a] -> [a]",
+    "function": "x => xs => [x, ...xs]",
+    "alternative": null,
+    "description": "Constructs an array with a new head by prepending a new element, first argument, onto an array, second argument",
+    "arguments": "(1)([2,3])",
+    "return": "[1,2,3]",
+    "link": null
+  },
+  {
     "name": "elem",
     "type": "a -> [a] -> Bool",
     "function": "x => xs => xs.indexOf(x) !== -1",
