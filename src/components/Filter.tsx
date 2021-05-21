@@ -40,8 +40,7 @@ const Container = styled.div`
 
 const FilterWrapper = styled.div`
   position: sticky;
-  margin: 1rem 0;
-  margin-right: 1rem;
+  margin: 1rem;
   border: 1px solid #ccc;
   border-radius: 3px;
 `;
@@ -60,6 +59,7 @@ const Input = styled.input`
 const FilterFunctions = styled.ul`
   height: calc(100vh - 135px);
   overflow-y: auto;
+  list-style-type: none;
 `;
 
 const FunctionNavSelector = styled.li`
@@ -67,6 +67,7 @@ const FunctionNavSelector = styled.li`
   padding: 5px 12px;
   color: #000;
   text-decoration: none;
+  margin-left: 1rem;
   &:hover {
     background: #e4e4e4;
   }
