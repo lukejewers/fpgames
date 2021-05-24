@@ -275,7 +275,7 @@
     "function": "xs => xs.join(' ')",
     "alternative": null,
     "description": "Takes an array of strings and creates a string where the space characters are joiners",
-    "arguments": "['hello', 'world']",
+    "arguments": "(['hello', 'world'])",
     "return": "'hello world'",
     "link": "words"
   },
@@ -285,7 +285,7 @@
     "function": "s => s.split(/\"s+/)",
     "alternative": null,
     "description": "Takes a string and creates an array of words where the space characters are separators",
-    "arguments": "hello world",
+    "arguments": "('hello world')",
     "return": "['hello', 'world']",
     "link": "unwords"
   },
