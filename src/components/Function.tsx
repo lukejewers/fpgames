@@ -9,7 +9,7 @@ const Function: React.FC<any> = ({ f }) => {
       <Type>
         <Bold>{f.name}</Bold> : : {f.type}
       </Type>
-      <Description>{f.description}</Description>
+      <Description>{f.description}.</Description>
       <Repl>
         <FunctionWrapper>
           {f.alternative === null ? (
