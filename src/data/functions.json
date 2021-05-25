@@ -80,6 +80,16 @@
     "link": null
   },
   {
+    "name": "drop",
+    "type": "Number -> [a] -> [a]",
+    "function": "n => xs => xs.slice(n)",
+    "alternative": null,
+    "description": "Returns an array with n elements dropped from the beginning.",
+    "arguments": "(2)([1,2,3,4,5])",
+    "return": "[3,4,5]",
+    "link": "take"
+  },
+  {
     "name": "elem",
     "type": "a -> [a] -> Bool",
     "function": "x => xs => xs.indexOf(x) !== -1",
@@ -278,6 +288,16 @@
     "arguments": "([1,2,3,4])",
     "return": "[2,3,4]",
     "link": "head"
+  },
+  {
+    "name": "take",
+    "type": "Number -> [a] -> [a]",
+    "function": "n => xs => xs.slice(0, n)",
+    "alternative": null,
+    "description": "Returns an array with n elements taken from the beginning.",
+    "arguments": "(3)([1,2,3,4,5])",
+    "return": "[1,2,3]",
+    "link": "drop"
   },
   {
     "name": "unwords",
