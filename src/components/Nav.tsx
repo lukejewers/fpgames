@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Nav = () => {
+const Nav: React.FC<any> = ({ open, setOpen }) => {
   return (
     <NavContainer>
       <NavItems>
-        <NavBurger>
+        <NavBurger onClick={() => setOpen(!open)}>
           <svg viewBox='0 0 100 80' width='30' height='30'>
             <rect width='100' height='18'></rect>
             <rect y='30' width='100' height='18'></rect>
@@ -29,7 +29,7 @@ const Nav = () => {
           </NavLink>{" "}
           &{" "}
           <NavLink
-            href='https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore'
+            href='https://you-dont-need.github.io/You-Dont-Need-Lodash-Underscore/#/'
             target='_blank'
           >
             You Don't Need Lodash
@@ -71,8 +71,9 @@ const NavItems = styled.div`
 const NavBurger = styled.div`
   display: none;
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     display: flex;
+    cursor: pointer;
   }
 `;
 
@@ -87,7 +88,6 @@ const NavLink = styled.a`
   text-decoration: none;
   &:hover {
     text-decoration: underline;
-    font-weight: 500;
   }
 `;
 
@@ -97,8 +97,9 @@ const GitLink = styled.a`
   font-size: 1.25rem;
   height: 20px;
   width: 20px;
+  opacity: 1;
   &:hover {
-    color: #3173dc;
+    opacity: 0.5;
   }
 `;
 

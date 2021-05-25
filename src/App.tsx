@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./components/Nav";
 import Filter from "./components/Filter";
 import Lib from "./components/Lib";
@@ -6,11 +6,13 @@ import data from "./data/functions.json";
 import styled from "styled-components";
 
 const App: React.FC = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <Nav />
+      <Nav open={open} setOpen={setOpen} />
       <Layout>
-        <Filter data={data} />
+        <Filter data={data} open={open} />
         <Lib data={data} />
       </Layout>
     </>

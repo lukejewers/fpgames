@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
 
-const Filter: React.FC<any> = ({ data }) => {
+const Filter: React.FC<any> = ({ data, open }) => {
   const [input, setInput] = useState("");
 
   return (
     <>
-      <Container>
+      <Container open={open}>
         <FilterWrapper>
           <Input
             type='text'
@@ -31,11 +31,17 @@ const Filter: React.FC<any> = ({ data }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<any>`
   position: sticky;
   top: 63px;
   height: 100%;
   width: auto;
+
+  @media (max-width: 768px) {
+    display: ${({ open }: any) => (open ? "block" : "none")};
+    transform: ${({ open }: any) =>
+      open ? "translateX(0%)" : "translateX(-100%)"};
+  }
 `;
 
 const FilterWrapper = styled.div`
