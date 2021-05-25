@@ -40,7 +40,7 @@ const Container = styled.div<any>`
   @media (max-width: 768px) {
     display: ${({ open }: any) => (open ? "block" : "none")};
     transform: ${({ open }: any) =>
-      open ? "translateX(0%)" : "translateX(-100%)"};
+      open ? "translateX(0vw)" : "translateX(-100vw)"};
   }
 `;
 

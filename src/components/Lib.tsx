@@ -14,6 +14,10 @@ const Lib: React.FC<any> = ({ data }) => {
 
 const Wrapper = styled.div`
   border-left: 1px solid #ccc;
+
+  @media (max-width: 768px) {
+    overflow-x: hidden;
+  }
 `;
 
 export default Lib;
