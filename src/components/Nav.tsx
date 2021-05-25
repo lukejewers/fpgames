@@ -5,23 +5,37 @@ const Nav = () => {
   return (
     <NavContainer>
       <NavItems>
+        <NavBurger>
+          <svg viewBox='0 0 100 80' width='30' height='30'>
+            <rect width='100' height='18'></rect>
+            <rect y='30' width='100' height='18'></rect>
+            <rect y='60' width='100' height='18'></rect>
+          </svg>
+        </NavBurger>
         <h1
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{ cursor: "pointer" }}
         >
           Joogle
         </h1>
-        <p>
+        <NavInspo>
           {">"} Functional Vanilla Javascript Functions (inspired by{" "}
           <NavLink href='https://ramdajs.com/docs/#identity' target='_blank'>
             Ramda
-          </NavLink>{" "}
-          &{" "}
+          </NavLink>
+          ,{" "}
           <NavLink href='https://hoogle.haskell.org/' target='_blank'>
             Hoogle
+          </NavLink>{" "}
+          &{" "}
+          <NavLink
+            href='https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore'
+            target='_blank'
+          >
+            You Don't Need Lodash
           </NavLink>
           )
-        </p>
+        </NavInspo>
         <GitLink href='https://github.com/lukejewers/joogle' target='_blank'>
           <svg
             role='img'
@@ -50,8 +64,22 @@ const NavItems = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 950px;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1.5rem;
   margin: auto;
+`;
+
+const NavBurger = styled.div`
+  display: none;
+
+  @media (max-width: 900px) {
+    display: flex;
+  }
+`;
+
+const NavInspo = styled.p`
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const NavLink = styled.a`
