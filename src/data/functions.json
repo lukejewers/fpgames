@@ -1,7 +1,7 @@
 [
   {
     "name": "add",
-    "type": "Number -> Number -> Number",
+    "type": "number -> number -> number",
     "function": "x => y => x + y",
     "alternative": null,
     "description": "Adds one number to another and returns the result",
@@ -11,7 +11,7 @@
   },
   {
     "name": "and",
-    "type": "Bool -> Bool -> Bool",
+    "type": "boolean -> boolean -> boolean",
     "function": "x => y => x && y",
     "alternative": null,
     "description": "Returns the conjunction of two booleans",
@@ -31,7 +31,7 @@
   },
   {
     "name": "both",
-    "type": "(a -> Bool) -> (a -> Bool) -> Bool",
+    "type": "(a -> boolean) -> (a -> boolean) -> boolean",
     "function": "f => g => x => f(x) && g(x)",
     "alternative": null,
     "description": "Returns the conjunction of the boolean results of two supplied function applications",
@@ -41,7 +41,7 @@
   },
   {
     "name": "chunksOf",
-    "type": "Number -> [a] -> [[a]]",
+    "type": "number -> [a] -> [[a]]",
     "function": "x => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
     "alternative": null,
     "description": "Splits an arary into chunks of the supplied length ",
@@ -81,7 +81,7 @@
   },
   {
     "name": "drop",
-    "type": "Number -> [a] -> [a]",
+    "type": "number -> [a] -> [a]",
     "function": "n => xs => xs.slice(n)",
     "alternative": null,
     "description": "Returns an array with n elements dropped from the beginning",
@@ -91,7 +91,7 @@
   },
   {
     "name": "elem",
-    "type": "a -> [a] -> Bool",
+    "type": "a -> [a] -> boolean",
     "function": "x => xs => xs.indexOf(x) !== -1",
     "alternative": "x => xs => xs.includes(x)",
     "description": "Returns boolean value as to whether element is in array",
@@ -111,7 +111,7 @@
   },
   {
     "name": "eq",
-    "type": "a -> a -> Bool",
+    "type": "a -> a -> boolean",
     "function": "x => y => x == y",
     "alternative": null,
     "description": "Returns boolean value as to whether element is in array",
@@ -121,7 +121,7 @@
   },
   {
     "name": "filter",
-    "type": "(a -> Bool) -> [a] -> [a]",
+    "type": "(a -> boolean) -> [a] -> [a]",
     "function": "p => xs => xs.filter(p)",
     "alternative": "p => xs => xs.reduce((acc, x) => p(x) ? acc.concat(x) : acc, [])",
     "description": "Returns an array that fulfilling a predicate function supplied as the first argument",
@@ -138,6 +138,16 @@
     "arguments": "(x => y => x / y)(2)(4)",
     "return": "2",
     "link": null
+  },
+  {
+    "name": "gt",
+    "type": "number -> number -> boolean",
+    "function": "x => y => x > y",
+    "alternative": null,
+    "description": "Returns true if first argument is greater than second, false otherwise",
+    "arguments": "(3)(2)",
+    "return": "true",
+    "link": "lt"
   },
   {
     "name": "head",
@@ -201,13 +211,23 @@
   },
   {
     "name": "length",
-    "type": "[a] -> Number",
+    "type": "[a] -> number",
     "function": "xs => xs.length",
     "alternative": "xs => xs.map(x => x = 1).reduce((acc,x) => acc + x)",
     "description": "Returns the length of an array",
     "arguments": "([1,2,3])",
     "return": "3",
     "link": null
+  },
+  {
+    "name": "lt",
+    "type": "number -> number -> boolean",
+    "function": "x => y => x < y",
+    "alternative": null,
+    "description": "Returns true if first argument is smaller than second, false otherwise",
+    "arguments": "(2)(3)",
+    "return": "true",
+    "link": "gt"
   },
   {
     "name": "map",
@@ -221,7 +241,7 @@
   },
   {
     "name": "multiply",
-    "type": "Number -> Number -> Number",
+    "type": "number -> number -> number",
     "function": "x => y => x * y",
     "alternative": null,
     "description": "Multiplies together two numbers and returns the result",
@@ -231,7 +251,7 @@
   },
   {
     "name": "notElem",
-    "type": "a -> [a] -> Bool",
+    "type": "a -> [a] -> boolean",
     "function": "x => xs => xs.indexOf(x) === -1",
     "alternative": "x => xs => !xs.includes(x)",
     "description": "Returns boolean value as to whether element is not in array",
@@ -251,7 +271,7 @@
   },
   {
     "name": "or",
-    "type": "Bool -> Bool -> Bool",
+    "type": "boolean -> boolean -> boolean",
     "function": "x => y => x || y",
     "alternative": null,
     "description": "Returns the conjunction of two booleans",
@@ -280,8 +300,18 @@
     "link": null
   },
   {
+    "name": "reverse",
+    "type": "[a] -> [a]",
+    "function": "xs => xs.reverse()",
+    "alternative": "xs => xs.reduce((acc,x) => [x].concat(acc), [])",
+    "description": "Reverses supplied array",
+    "arguments": "([1,2,3])",
+    "return": "[3,2,1]",
+    "link": null
+  },
+  {
     "name": "subtract",
-    "type": "Number -> Number -> Number",
+    "type": "number -> number -> number",
     "function": "x => y => x - y",
     "alternative": null,
     "description": "Subtracts one number from another and returns the result",
@@ -301,7 +331,7 @@
   },
   {
     "name": "take",
-    "type": "Number -> [a] -> [a]",
+    "type": "number -> [a] -> [a]",
     "function": "n => xs => xs.slice(0, n)",
     "alternative": null,
     "description": "Returns an array with n elements taken from the beginning",
