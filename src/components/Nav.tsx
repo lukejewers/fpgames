@@ -36,7 +36,7 @@ const Nav: React.FC<any> = ({ open, setOpen }) => {
           </NavLink>
           )
         </NavInspo>
-        <GitLink href='https://github.com/lukejewers/joogle' target='_blank'>
+        <GitLink href='https://github.com/lukejewers/fp-js' target='_blank'>
           <svg
             role='img'
             viewBox='0 0 24 24'
