@@ -16,7 +16,7 @@ const Nav: React.FC<any> = ({ open, setOpen }) => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{ cursor: "pointer" }}
         >
-          Joogle
+          FP JS
         </h1>
         <NavInspo>
           {">"} Functional Vanilla Javascript Functions (inspired by{" "}
