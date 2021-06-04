@@ -1,6 +1,6 @@
-import { and } from "../functions/and";
+import { and } from "./and";
 
-test("and", () => {
+describe("and", () => {
   it("should return the conjunction of two booleans", () => {
     expect(and(true)(false)).toBe(false);
     expect(and(false)(true)).toBe(false);
