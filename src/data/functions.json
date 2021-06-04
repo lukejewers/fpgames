@@ -31,10 +31,10 @@
   },
   {
     "name": "both",
-    "type": "(a -> boolean) -> (a -> boolean) -> boolean",
+    "type": "(a -> boolean) -> (a -> boolean) -> a -> boolean",
     "function": "f => g => x => f(x) && g(x)",
     "alternative": null,
-    "description": "Returns the conjunction of the boolean results of two supplied function applications",
+    "description": "Returns the conjunction of the boolean outputs of two supplied function applications",
     "arguments": "(x => x > 1)(x => x < 10)(5)",
     "return": "true",
     "link": null
