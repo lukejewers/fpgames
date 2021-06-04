@@ -1,7 +1,7 @@
 import { difference, _difference } from "./difference";
 
 describe("difference", () => {
-  it("return the values from the first array that are not present in the second array", () => {
+  it("should return the values from the first array that are not present in the second array", () => {
     expect(
       difference([
         [1, 2, 3, 4, 5],
