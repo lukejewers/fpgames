@@ -44,7 +44,7 @@
     "type": "number -> [a] -> [[a]]",
     "function": "x => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
     "alternative": null,
-    "description": "Splits an arary into chunks of the supplied length ",
+    "description": "Splits an array into chunks of the supplied first argument",
     "arguments": "(2)(['a','b','c','d'])",
     "return": "[['a','b'],['c','d']]",
     "link": null
@@ -54,7 +54,7 @@
     "type": "(b -> c) -> (a -> b) -> a -> c",
     "function": "(...fs) => x => fs.reduceRight((acc, f) => f(acc), x)",
     "alternative": null,
-    "description": "Successively applies a list of functions to an argument from right to left, where the output of each function application is the input to the next",
+    "description": "Successively applies a list of functions to a supplied argument from right to left, where the output of each function application is the input to the next",
     "arguments": "(add(1), multiply(2))(3)",
     "return": "7",
     "link": "pipe"
@@ -64,7 +64,7 @@
     "type": "a -> [a] -> [a]",
     "function": "x => xs => [x, ...xs]",
     "alternative": null,
-    "description": "Constructs an array with a new head by prepending a new element, first argument, onto an array, second argument",
+    "description": "Constructs an array with a new head by prepending a new element, the first argument, onto an array, the second argument",
     "arguments": "(1)([2,3])",
     "return": "[1,2,3]",
     "link": null
@@ -84,7 +84,7 @@
     "type": "number -> [a] -> [a]",
     "function": "n => xs => xs.slice(n)",
     "alternative": null,
-    "description": "Returns an array with n elements dropped from the beginning",
+    "description": "Returns an array with n elements, the first argument, dropped from the beginning",
     "arguments": "(2)([1,2,3,4,5])",
     "return": "[3,4,5]",
     "link": "take"
@@ -94,7 +94,7 @@
     "type": "a -> [a] -> boolean",
     "function": "x => xs => xs.indexOf(x) !== -1",
     "alternative": "x => xs => xs.includes(x)",
-    "description": "Returns boolean value as to whether element is in array",
+    "description": "Returns a boolean value as to whether an element is in array",
     "arguments": "(1)([1,2,3])",
     "return": "True",
     "link": "notElem"
@@ -104,7 +104,7 @@
     "type": "a -> a -> [a]",
     "function": "m => n => Array.from({length: Math.floor(n - m) + 1 }, (_, i) => m + i)",
     "alternative": null,
-    "description": "Enumerates a range of values in an array from given start and end arguments",
+    "description": "Enumerates a range of values in an array from the supplied start and end arguments",
     "arguments": "(1)(10)",
     "return": "[1,2,3,4,5,6,7,8,9,10]",
     "link": null
