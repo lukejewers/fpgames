@@ -294,7 +294,7 @@
     "type": "(a -> b) -> (b -> c) -> a -> c",
     "function": "p => o => o[p]",
     "alternative": null,
-    "description": "Returns a value that when supplied an object returns the indicated property of that object",
+    "description": "Returns a property of an object",
     "arguments": "('x')({x: 1})",
     "return": "1",
     "link": null
@@ -322,7 +322,7 @@
   {
     "name": "tail",
     "type": "[a] -> [a]",
-    "function": "xs => xs.length ? xs.slice(-(xs.length - 1)) : undefined",
+    "function": "xs => xs.slice(-(xs.length - 1))",
     "alternative": "([x, ...xs]) =>  xs",
     "description": "Returns supplied array without the first element",
     "arguments": "([1,2,3,4])",
