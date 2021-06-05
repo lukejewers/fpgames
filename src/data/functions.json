@@ -254,7 +254,7 @@
     "type": "a -> [a] -> boolean",
     "function": "x => xs => xs.indexOf(x) === -1",
     "alternative": "x => xs => !xs.includes(x)",
-    "description": "Returns boolean value as to whether element is not in array",
+    "description": "Returns a boolean value as to whether element is not in array",
     "arguments": "(1)([2,3,4])",
     "return": "true",
     "link": "elem"
