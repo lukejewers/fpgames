@@ -34,7 +34,7 @@
     "type": "(a -> boolean) -> (a -> boolean) -> a -> boolean",
     "function": "f => g => x => f(x) && g(x)",
     "alternative": null,
-    "description": "Returns the conjunction of the boolean outputs of two supplied function applications",
+    "description": "Returns the conjunction of the boolean outputs of two function applications",
     "arguments": "(x => x > 1)(x => x < 10)(5)",
     "return": "true",
     "link": null
@@ -44,7 +44,7 @@
     "type": "number -> [a] -> [[a]]",
     "function": "n => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
     "alternative": null,
-    "description": "Splits an array into chunks of the supplied first argument",
+    "description": "Splits an array into n chunks",
     "arguments": "(2)(['a','b','c','d'])",
     "return": "[['a','b'],['c','d']]",
     "link": null
@@ -64,7 +64,7 @@
     "type": "a -> [a] -> [a]",
     "function": "x => xs => [x, ...xs]",
     "alternative": null,
-    "description": "Constructs an array with a new head by prepending a new element, the first argument, onto an array, the second argument",
+    "description": "Constructs an array with a new head by prepending a new element onto an array",
     "arguments": "(1)([2,3])",
     "return": "[1,2,3]",
     "link": null
@@ -84,7 +84,7 @@
     "type": "number -> [a] -> [a]",
     "function": "n => xs => xs.slice(n)",
     "alternative": null,
-    "description": "Returns an array with n elements, the first argument, dropped from the beginning",
+    "description": "Returns an array with n elements dropped from the beginning",
     "arguments": "(2)([1,2,3,4,5])",
     "return": "[3,4,5]",
     "link": "take"
@@ -124,7 +124,7 @@
     "type": "(a -> boolean) -> [a] -> [a]",
     "function": "p => xs => xs.filter(p)",
     "alternative": "p => xs => xs.reduce((acc, x) => p(x) ? acc.concat(x) : acc, [])",
-    "description": "Returns an array that satisfies a predicate supplied as the first argument",
+    "description": "Returns an array that satisfies a predicate",
     "arguments": "(x => x > 3)([1,2,3,4,5])",
     "return": "[4,5]",
     "link": null
@@ -234,7 +234,7 @@
     "type": "(a -> b) -> [a] -> [b]",
     "function": "f => xs => xs.map(f)",
     "alternative": "f => xs => xs.reduce((acc, x) => [...acc, f(x)], [])",
-    "description": "Applies a supplied function to each element in a supplied array and returns a new array of transformed values",
+    "description": "Applies a function to each element in an array and returns a new array of transformed values",
     "arguments": "(inc)([1,2,3])",
     "return": "[2,3,4]",
     "link": null
@@ -304,7 +304,7 @@
     "type": "[a] -> [a]",
     "function": "xs => xs.reverse()",
     "alternative": "xs => xs.reduce((acc,x) => [x].concat(acc), [])",
-    "description": "Reverses supplied array",
+    "description": "Reverses the supplied array",
     "arguments": "([1,2,3])",
     "return": "[3,2,1]",
     "link": null
@@ -324,7 +324,7 @@
     "type": "[a] -> [a]",
     "function": "xs => xs.slice(-(xs.length - 1))",
     "alternative": "([x, ...xs]) =>  xs",
-    "description": "Returns supplied array without the first element",
+    "description": "Returns the supplied array without the first element",
     "arguments": "([1,2,3,4])",
     "return": "[2,3,4]",
     "link": "head"
@@ -334,7 +334,7 @@
     "type": "number -> [a] -> [a]",
     "function": "n => xs => xs.slice(0, n)",
     "alternative": null,
-    "description": "Returns an array with n elements taken from the beginning",
+    "description": "Returns a new array with n elements taken from the beginning of the supplied array",
     "arguments": "(3)([1,2,3,4,5])",
     "return": "[1,2,3]",
     "link": "drop"
