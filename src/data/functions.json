@@ -184,7 +184,7 @@
     "type": "[a] -> [a] -> [a]",
     "function": "xs => xs.reduce((a, b) => a.filter(c => b.includes(c)))",
     "alternative": "([xs, ys]) => {const s = new Set(ys); return xs.filter(x => s.has(x))}",
-    "description": "Returns the values that are present in the supplied arrays",
+    "description": "Returns the values that are present in every supplied array",
     "arguments": "([[1, 10, 2, 11, 3], [4, 1, 5, 2, 6, 3], [7, 2, 8, 1, 9, 3]])",
     "return": "[1,2,3]",
     "link": "difference"
