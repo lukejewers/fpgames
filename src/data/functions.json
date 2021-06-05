@@ -202,7 +202,7 @@
   {
     "name": "last",
     "type": "[a] -> a",
-    "function": "xs => xs.length ? xs.slice(-1)[0] : undefined",
+    "function": "xs => xs.slice(-1)[0]",
     "alternative": null,
     "description": "Returns the last element in an array",
     "arguments": "([1,2,3])",
