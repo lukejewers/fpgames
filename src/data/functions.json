@@ -42,7 +42,7 @@
   {
     "name": "chunksOf",
     "type": "number -> [a] -> [[a]]",
-    "function": "x => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
+    "function": "n => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
     "alternative": null,
     "description": "Splits an array into chunks of the supplied first argument",
     "arguments": "(2)(['a','b','c','d'])",
@@ -204,7 +204,7 @@
     "type": "[a] -> a",
     "function": "xs => xs.slice(-1)[0]",
     "alternative": null,
-    "description": "Returns the last element in an array",
+    "description": "Returns the last element in the supplied array",
     "arguments": "([1,2,3])",
     "return": "3",
     "link": null
@@ -234,7 +234,7 @@
     "type": "(a -> b) -> [a] -> [b]",
     "function": "f => xs => xs.map(f)",
     "alternative": "f => xs => xs.reduce((acc, x) => [...acc, f(x)], [])",
-    "description": "Applies a function to each element in an array and returns a new array of transformed values",
+    "description": "Applies a supplied function to each element in a supplied array and returns a new array of transformed values",
     "arguments": "(inc)([1,2,3])",
     "return": "[2,3,4]",
     "link": null

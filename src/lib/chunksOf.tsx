@@ -1,7 +1,7 @@
-export const chunksOf = (x: number) => (xs: any[]) =>
+export const chunksOf = (n: number) => (xs: any[]) =>
   xs.reduce(
     (acc, y, idx) =>
-      idx % x === 0
+      idx % n === 0
         ? [...acc, [y]]
         : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]],
     []
