@@ -152,7 +152,7 @@
   {
     "name": "head",
     "type": "[a] -> a",
-    "function": "xs => xs.length ? xs[0] : undefined",
+    "function": "xs => xs[0]",
     "alternative": "([x, ...xs]) =>  x",
     "description": "Returns the first element of an array",
     "arguments": "([1,2,3])",
