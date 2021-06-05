@@ -114,7 +114,7 @@
     "type": "a -> a -> boolean",
     "function": "x => y => x == y",
     "alternative": null,
-    "description": "Returns boolean value as to whether element is in array",
+    "description": "Returns a boolean value as to whether two arguments are equal",
     "arguments": "(1)(1)",
     "return": "true",
     "link": null
@@ -124,7 +124,7 @@
     "type": "(a -> boolean) -> [a] -> [a]",
     "function": "p => xs => xs.filter(p)",
     "alternative": "p => xs => xs.reduce((acc, x) => p(x) ? acc.concat(x) : acc, [])",
-    "description": "Returns an array that fulfilling a predicate function supplied as the first argument",
+    "description": "Returns an array that satisfies a predicate supplied as the first argument",
     "arguments": "(x => x > 3)([1,2,3,4,5])",
     "return": "[4,5]",
     "link": null
