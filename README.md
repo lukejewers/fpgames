@@ -1,4 +1,4 @@
-## Joogle
+## FP JS
 
 List of common javascript functions written in a functional style.
 
