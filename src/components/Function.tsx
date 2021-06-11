@@ -41,7 +41,13 @@ const Function: React.FC<any> = ({ f }) => {
       {f.link ? (
         <div>
           See also{" "}
-          <FunctionLink href={`#${f.link}`} onClick={handleScroll}>
+          <FunctionLink
+            href={`#${f.link}`}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+              e.preventDefault();
+              handleScroll(e.currentTarget.getAttribute("href"));
+            }}
+          >
             {f.link}
           </FunctionLink>
           .
