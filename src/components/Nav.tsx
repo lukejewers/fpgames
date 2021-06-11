@@ -57,6 +57,7 @@ const NavContainer = styled.div`
   position: sticky;
   top: 0px;
   background-color: ${(props) => props.theme.javascriptYellow};
+  border-bottom: 5px solid #dec91b;
 `;
 
 const NavItems = styled.div`
@@ -64,7 +65,7 @@ const NavItems = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 950px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   margin: auto;
 `;
 

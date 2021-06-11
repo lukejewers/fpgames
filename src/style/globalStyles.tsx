@@ -9,6 +9,9 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: none;
   };
  
+ h1{
+   font-size: 1.75rem;
+ }
 `;
 
 export default GlobalStyles;
