@@ -5,26 +5,36 @@ import { handleScroll } from "../scroll/Scroll";
 const Filter: React.FC<any> = ({ data, open }) => {
   const [input, setInput] = useState("");
 
+  const filteredArray = data
+    .map((x: any) => x.name)
+    .filter((x: any) => x.includes(input));
+
   return (
     <>
       <Container open={open}>
-        <FilterWrapper>
+        <FilterContainer>
           <Input
             type='text'
             placeholder='Filter...'
             onChange={(e: any) => setInput(e.target.value)}
+            onKeyDown={(e: any) =>
+              e.keyCode === 13 ? handleScroll(filteredArray[0]) : ""
+            }
           ></Input>
           <MagnifyingGlass>🔍</MagnifyingGlass>
-        </FilterWrapper>
+        </FilterContainer>
         <FilterFunctions>
-          {data
-            .map((x: any) => x.name)
-            .filter((x: any) => x.includes(input))
-            .map((f: any, i: number) => (
-              <FunctionNavSelectorLink href={`#${f}`} onClick={handleScroll}>
-                <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
-              </FunctionNavSelectorLink>
-            ))}
+          {filteredArray.map((f: any, i: number) => (
+            <FunctionNavSelectorLink
+              href={`#${f}`}
+              onClick={(e: any) => {
+                e.preventDefault();
+                handleScroll(e.currentTarget.getAttribute("href"));
+              }}
+            >
+              <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
+            </FunctionNavSelectorLink>
+          ))}
         </FilterFunctions>
       </Container>
     </>
@@ -44,9 +54,9 @@ const Container = styled.div<any>`
   }
 `;
 
-const FilterWrapper = styled.div`
+const FilterContainer = styled.div`
   position: sticky;
-  margin: 1rem;
+  margin: 0.5rem 1rem 0.75rem 1rem;
   border: 1px solid #ccc;
   border-radius: 3px;
 `;
@@ -63,7 +73,7 @@ const Input = styled.input`
 `;
 
 const FilterFunctions = styled.ul`
-  height: calc(100vh - 135px);
+  height: calc(100vh - 125px);
   overflow-y: auto;
   list-style-type: none;
 `;

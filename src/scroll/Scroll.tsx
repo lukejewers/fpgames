@@ -1,9 +1,13 @@
-export const handleScroll = (e: any) => {
-  e.preventDefault();
-  const el = document.querySelector(e.currentTarget.getAttribute("href"))
-    .offsetTop;
+const filterEl = (el: any) =>
+  el
+    .split("")
+    .filter((x: any) => x !== "#")
+    .join("");
+
+export const handleScroll = (el: any) => {
+  const elOffset = document.getElementById(filterEl(el))!.offsetTop;
   window.scrollTo({
-    top: el - 65,
+    top: elOffset - 65,
     behavior: "smooth",
   });
 };
