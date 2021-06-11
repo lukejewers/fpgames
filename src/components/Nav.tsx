@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { ViewProps } from "../types/types";
 
-const Nav: React.FC<any> = ({ open, setOpen }) => {
+const Nav: React.FC<ViewProps> = ({ open, setOpen }) => {
   return (
     <NavContainer>
       <NavItems>

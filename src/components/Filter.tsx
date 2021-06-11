@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
+import { FunctionProps } from "../types/types";
 
 const Filter: React.FC<any> = ({ data, open }) => {
   const [input, setInput] = useState("");
 
   const filteredArray = data
-    .map((x: any) => x.name)
-    .filter((x: any) => x.includes(input));
+    .map((x: { name: string }) => x.name)
+    .filter((x: string) => x.includes(input));
 
   return (
     <>
@@ -16,19 +17,21 @@ const Filter: React.FC<any> = ({ data, open }) => {
           <Input
             type='text'
             placeholder='Filter...'
-            onChange={(e: any) => setInput(e.target.value)}
-            onKeyDown={(e: any) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setInput(e.target.value)
+            }
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
               e.keyCode === 13 ? handleScroll(filteredArray[0]) : ""
             }
           ></Input>
           <MagnifyingGlass>🔍</MagnifyingGlass>
         </FilterContainer>
         <FilterFunctions>
-          {filteredArray.map((f: any, i: number) => (
+          {filteredArray.map((f: FunctionProps, i: number) => (
             <FunctionNavSelectorLink
               key={i}
               href={`#${f}`}
-              onClick={(e: any) => {
+              onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
                 e.preventDefault();
                 handleScroll(e.currentTarget.getAttribute("href"));
               }}
