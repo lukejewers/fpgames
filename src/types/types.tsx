@@ -9,10 +9,6 @@ export type FunctionProps = {
   link: string | null;
 };
 
-export type DataProps = {
-  data: FunctionProps[];
-};
-
 export type ViewProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

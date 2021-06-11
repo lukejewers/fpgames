@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
+import { FunctionProps } from "../types/types";
 
-const Function: React.FC<any> = ({ f }) => {
+const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
   return (
     <Container id={f.name}>
       <h1>{f.name}</h1>

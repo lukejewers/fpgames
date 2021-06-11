@@ -1,9 +1,9 @@
 import React from "react";
 import Function from "./Function";
 import styled from "styled-components";
-import { DataProps, FunctionProps } from "../types/types";
+import { FunctionProps } from "../types/types";
 
-const Lib: React.FC<DataProps> = ({ data }) => {
+const Lib: React.FC<{ data: FunctionProps[] }> = ({ data }) => {
   return (
     <Wrapper>
       {data.map((f: FunctionProps, i: number) => (

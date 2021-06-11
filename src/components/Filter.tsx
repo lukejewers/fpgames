@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
 import { FunctionProps } from "../types/types";
 
-const Filter: React.FC<any> = ({ data, open }) => {
+const Filter: React.FC<{ data: FunctionProps[]; open: boolean }> = ({
+  data,
+  open,
+}) => {
   const [input, setInput] = useState("");
 
   const filteredArray = data
@@ -27,7 +30,7 @@ const Filter: React.FC<any> = ({ data, open }) => {
           <MagnifyingGlass>🔍</MagnifyingGlass>
         </FilterContainer>
         <FilterFunctions>
-          {filteredArray.map((f: FunctionProps, i: number) => (
+          {filteredArray.map((f: string, i: number) => (
             <FunctionNavSelectorLink
               key={i}
               href={`#${f}`}
