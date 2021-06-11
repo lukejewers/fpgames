@@ -26,13 +26,14 @@ const Filter: React.FC<any> = ({ data, open }) => {
         <FilterFunctions>
           {filteredArray.map((f: any, i: number) => (
             <FunctionNavSelectorLink
+              key={i}
               href={`#${f}`}
               onClick={(e: any) => {
                 e.preventDefault();
                 handleScroll(e.currentTarget.getAttribute("href"));
               }}
             >
-              <FunctionNavSelector key={i}>{f}</FunctionNavSelector>
+              <FunctionNavSelector>{f}</FunctionNavSelector>
             </FunctionNavSelectorLink>
           ))}
         </FilterFunctions>
@@ -49,8 +50,6 @@ const Container = styled.div<any>`
 
   @media (max-width: 768px) {
     display: ${({ open }: any) => (open ? "block" : "none")};
-    transform: ${({ open }: any) =>
-      open ? "translateX(0vw)" : "translateX(-100vw)"};
   }
 `;
 
