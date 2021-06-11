@@ -5,8 +5,8 @@ import styled from "styled-components";
 const Lib: React.FC<any> = ({ data }) => {
   return (
     <Wrapper>
-      {data.map((f: any) => (
-        <Function f={f} />
+      {data.map((f: any, i: number) => (
+        <Function f={f} key={i} />
       ))}
     </Wrapper>
   );
