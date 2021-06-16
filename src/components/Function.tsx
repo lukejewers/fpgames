@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
 import { FunctionProps } from "../types/types";
 
 const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
+  const runKitRef = useRef<any>();
+  const fLink = useRef<any>();
+
+  const createRunKit = () => {
+    const runKitRefEl = runKitRef.current;
+    const wrapper = document.createElement("div");
+    window.RunKit.createNotebook({
+      element: wrapper,
+      gutterStyle: runKitRefEl.getAttribute("data-gutter"),
+      source: runKitRefEl.textContent.split(";").join("\n"),
+      onLoad: () => runKitRefEl.parentNode.remove(),
+    });
+
+    const fLinkEl = fLink.current;
+    runKitRefEl.parentNode.parentNode.insertBefore(wrapper, fLinkEl);
+  };
+
   return (
     <Container id={f.name}>
       <h1>{f.name}</h1>
@@ -15,9 +32,10 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
         <FunctionWrapper>
           {f.alternative === null ? (
             <>
-              <p>
+              <Expression>
                 <Const>const</Const> {f.name} = {f.function}
-              </p>
+              </Expression>
+              <RunKitREPL onClick={createRunKit}>Run Code Here</RunKitREPL>
             </>
           ) : (
             <>
@@ -27,6 +45,7 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
               <p>
                 <Const>let</Const> {f.name} = {f.alternative}
               </p>
+              <RunKitREPL onClick={createRunKit}>Run Code Here</RunKitREPL>
             </>
           )}
         </FunctionWrapper>
@@ -38,9 +57,16 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
         <p>
           <Return>{f.return}</Return>
         </p>
+        {/* prettier-ignore */}
+        <code data-gutter='inside' ref={runKitRef} className="embed" style={{display: 'none'}}>
+          let {f.name} = {f.function};
+          {f.name}{f.arguments}
+        </code>
+        {/* prettier-ignore */}
       </Repl>
+
       {f.link ? (
-        <div>
+        <div ref={fLink}>
           See also{" "}
           <FunctionLink
             href={`#${f.link}`}
@@ -81,7 +107,9 @@ const Bold = styled.span`
   font-weight: 700;
 `;
 
-const FunctionWrapper = styled.div``;
+const FunctionWrapper = styled.div`
+  position: relative;
+`;
 
 const Const = styled.span`
   color: #d73a49;
@@ -102,6 +130,23 @@ const Repl = styled.div`
   background-color: #f6f8fa;
   border-radius: 0.125rem;
   padding: 0.5rem 1rem;
+`;
+
+const Expression = styled.p`
+  width: 80%;
+`;
+
+const RunKitREPL = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 500;
+  }
 `;
 
 const Description = styled.p`

@@ -59,6 +59,7 @@ const NavContainer = styled.div`
   top: 0px;
   background-color: ${(props) => props.theme.javascriptYellow};
   border-bottom: 5px solid #dec91b;
+  z-index: 999;
 `;
 
 const NavItems = styled.div`

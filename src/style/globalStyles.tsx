@@ -12,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
  h1{
    font-size: 1.75rem;
  }
+
+ .embed { overflow: visible; }
 `;
 
 export default GlobalStyles;

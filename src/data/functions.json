@@ -42,7 +42,7 @@
   {
     "name": "chunksOf",
     "type": "number -> [a] -> [[a]]",
-    "function": "n => xs => xs.reduce((acc, y, idx) => idx % x === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
+    "function": "n => xs => xs.reduce((acc, y, idx) => idx % n === 0 ? [...acc, [y]] : [...acc.slice(0, -1), [...acc.slice(-1)[0], y]], [])",
     "alternative": null,
     "description": "Splits an array into n chunks",
     "arguments": "(2)(['a','b','c','d'])",
