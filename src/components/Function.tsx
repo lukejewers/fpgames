@@ -1,15 +1,14 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
 import { FunctionProps } from "../types/types";
-import { createRunKit } from "./Runkit";
+import Embed from "react-runkit";
 
 const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
-  const runKitRef = useRef(); // a
-  const fDefRef = useRef(); // b
-  const altFDefRef = useRef(); // c
-  const fAppRef = useRef(); // d
-  const fLinkRef = useRef(); // e
+  const [loadRunkit, setLoadRunkit] = useState(false);
+
+  const constSource = `const ${f.name} = ${f.function}\n${f.name}${f.arguments}`;
+  const letSource = `// let ${f.name} = ${f.function}\nlet ${f.name} = ${f.alternative}\n${f.name}${f.arguments}`;
 
   return (
     <Container id={f.name}>
@@ -18,30 +17,23 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
         <Bold>{f.name}</Bold> : : {f.type}
       </Type>
       <Description>{f.description}.</Description>
-      <Repl data-gutter='inside' ref={runKitRef} className='embed'>
+      <Repl
+        className='embed'
+        style={{ display: loadRunkit ? "none" : "block" }}
+      >
         <FunctionWrapper>
           {f.alternative === null ? (
             <>
-              <Definition ref={fDefRef}>
+              <Definition>
                 <Const>const</Const> {f.name} = {f.function}
               </Definition>
-              <RunKitREPL
-                onClick={() =>
-                  createRunKit(
-                    runKitRef.current,
-                    fDefRef.current,
-                    altFDefRef.current,
-                    fAppRef.current,
-                    fLinkRef.current
-                  )
-                }
-              >
+              <RunKitREPL onClick={() => setLoadRunkit((prev) => !prev)}>
                 Run Code Here
               </RunKitREPL>
             </>
           ) : (
             <>
-              <div ref={altFDefRef}>
+              <div>
                 <p>
                   <Const>let</Const> {f.name} = {f.function}
                 </p>
@@ -49,24 +41,14 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
                   <Const>let</Const> {f.name} = {f.alternative}
                 </p>
               </div>
-              <RunKitREPL
-                onClick={() =>
-                  createRunKit(
-                    runKitRef.current,
-                    fDefRef.current,
-                    altFDefRef.current,
-                    fAppRef.current,
-                    fLinkRef.current
-                  )
-                }
-              >
+              <RunKitREPL onClick={() => setLoadRunkit((prev) => !prev)}>
                 Run Code Here
               </RunKitREPL>
             </>
           )}
         </FunctionWrapper>
         <br />
-        <p ref={fAppRef}>
+        <p>
           <FunctionName>{f.name}</FunctionName>
           {f.arguments}
         </p>
@@ -74,9 +56,15 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
           <Arrow>{">"}</Arrow> <Return>{f.return}</Return>
         </p>
       </Repl>
+      {loadRunkit && (
+        <Embed
+          source={f.alternative === null ? constSource : letSource}
+          gutterStyle={"inside"}
+        />
+      )}
 
       {f.link ? (
-        <div ref={fLinkRef}>
+        <div>
           See also{" "}
           <FunctionLink
             href={`#${f.link}`}
