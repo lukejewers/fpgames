@@ -5,20 +5,46 @@ import { FunctionProps } from "../types/types";
 
 const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
   const runKitRef = useRef<any>();
-  const fLink = useRef<any>();
+  const fDefRef = useRef<any>();
+  const altFDefRef = useRef<any>();
+  const fAppRef = useRef<any>();
+  const fLinkRef = useRef<any>();
 
   const createRunKit = () => {
     const runKitRefEl = runKitRef.current;
+    const fDefRefEl = fDefRef.current;
+    const altFDefRefEl = altFDefRef.current;
+    const fAppRefEl = fAppRef.current;
+    const fLinkRefEl = fLinkRef.current;
+
     const wrapper = document.createElement("div");
+    let tail = (xs: any[]) => xs.slice(-(xs.length - 1));
+    let init = (xs: any[]) => xs.slice(0, xs.length - 1);
+    let last = (xs: any[]) => xs.slice(-1)[0];
+
+    const letNodesToStrings = (node: Node) =>
+      tail(node.textContent.split("let ")).map((x: string) => "let " + x);
+
+    const addHeadComment = (x: any[]) => {
+      const lastElem = last(x);
+      const subArr = init(["// "].concat(x)).join("");
+      return [subArr].concat(lastElem);
+    };
+
+    const toRunKitSource = (y: any[]) =>
+      y.concat(fAppRefEl.textContent).join("\n");
+
     window.RunKit.createNotebook({
       element: wrapper,
       gutterStyle: runKitRefEl.getAttribute("data-gutter"),
-      source: runKitRefEl.textContent.split(";").join("\n"),
-      onLoad: () => runKitRefEl.parentNode.remove(),
+      source: altFDefRefEl
+        ? toRunKitSource(addHeadComment(letNodesToStrings(altFDefRefEl)))
+        : toRunKitSource([fDefRefEl.textContent]),
+
+      onLoad: () => runKitRefEl.remove(),
     });
 
-    const fLinkEl = fLink.current;
-    runKitRefEl.parentNode.parentNode.insertBefore(wrapper, fLinkEl);
+    runKitRefEl.parentNode.insertBefore(wrapper, fLinkRefEl);
   };
 
   return (
@@ -28,45 +54,41 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
         <Bold>{f.name}</Bold> : : {f.type}
       </Type>
       <Description>{f.description}.</Description>
-      <Repl>
+      <Repl data-gutter='inside' ref={runKitRef} className='embed'>
         <FunctionWrapper>
           {f.alternative === null ? (
             <>
-              <Expression>
+              <Definition ref={fDefRef}>
                 <Const>const</Const> {f.name} = {f.function}
-              </Expression>
+              </Definition>
               <RunKitREPL onClick={createRunKit}>Run Code Here</RunKitREPL>
             </>
           ) : (
             <>
-              <p>
-                <Const>let</Const> {f.name} = {f.function}
-              </p>
-              <p>
-                <Const>let</Const> {f.name} = {f.alternative}
-              </p>
+              <div ref={altFDefRef}>
+                <p>
+                  <Const>let</Const> {f.name} = {f.function}
+                </p>
+                <p>
+                  <Const>let</Const> {f.name} = {f.alternative}
+                </p>
+              </div>
               <RunKitREPL onClick={createRunKit}>Run Code Here</RunKitREPL>
             </>
           )}
         </FunctionWrapper>
         <br />
-        <p>
-          <Arrow>{">"}</Arrow> <FunctionName>{f.name}</FunctionName>
+        <p ref={fAppRef}>
+          <FunctionName>{f.name}</FunctionName>
           {f.arguments}
         </p>
         <p>
-          <Return>{f.return}</Return>
+          <Arrow>{">"}</Arrow> <Return>{f.return}</Return>
         </p>
-        {/* prettier-ignore */}
-        <code data-gutter='inside' ref={runKitRef} className="embed" style={{display: 'none'}}>
-          let {f.name} = {f.function};
-          {f.name}{f.arguments}
-        </code>
-        {/* prettier-ignore */}
       </Repl>
 
       {f.link ? (
-        <div ref={fLink}>
+        <div ref={fLinkRef}>
           See also{" "}
           <FunctionLink
             href={`#${f.link}`}
@@ -132,7 +154,7 @@ const Repl = styled.div`
   padding: 0.5rem 1rem;
 `;
 
-const Expression = styled.p`
+const Definition = styled.p`
   width: 80%;
 `;
 
