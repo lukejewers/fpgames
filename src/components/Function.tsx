@@ -2,50 +2,14 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { handleScroll } from "../scroll/Scroll";
 import { FunctionProps } from "../types/types";
+import { createRunKit } from "./Runkit";
 
 const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
-  const runKitRef = useRef<any>();
-  const fDefRef = useRef<any>();
-  const altFDefRef = useRef<any>();
-  const fAppRef = useRef<any>();
-  const fLinkRef = useRef<any>();
-
-  const createRunKit = () => {
-    const runKitRefEl = runKitRef.current;
-    const fDefRefEl = fDefRef.current;
-    const altFDefRefEl = altFDefRef.current;
-    const fAppRefEl = fAppRef.current;
-    const fLinkRefEl = fLinkRef.current;
-
-    const wrapper = document.createElement("div");
-    let tail = (xs: any[]) => xs.slice(-(xs.length - 1));
-    let init = (xs: any[]) => xs.slice(0, xs.length - 1);
-    let last = (xs: any[]) => xs.slice(-1)[0];
-
-    const letNodesToStrings = (node: Node) =>
-      tail(node.textContent.split("let ")).map((x: string) => "let " + x);
-
-    const addHeadComment = (x: any[]) => {
-      const lastElem = last(x);
-      const subArr = init(["// "].concat(x)).join("");
-      return [subArr].concat(lastElem);
-    };
-
-    const toRunKitSource = (y: any[]) =>
-      y.concat(fAppRefEl.textContent).join("\n");
-
-    window.RunKit.createNotebook({
-      element: wrapper,
-      gutterStyle: runKitRefEl.getAttribute("data-gutter"),
-      source: altFDefRefEl
-        ? toRunKitSource(addHeadComment(letNodesToStrings(altFDefRefEl)))
-        : toRunKitSource([fDefRefEl.textContent]),
-
-      onLoad: () => runKitRefEl.remove(),
-    });
-
-    runKitRefEl.parentNode.insertBefore(wrapper, fLinkRefEl);
-  };
+  const runKitRef = useRef<any>(); // a
+  const fDefRef = useRef<any>(); // b
+  const altFDefRef = useRef<any>(); // c
+  const fAppRef = useRef<any>(); // d
+  const fLinkRef = useRef<any>(); // e
 
   return (
     <Container id={f.name}>
@@ -61,7 +25,19 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
               <Definition ref={fDefRef}>
                 <Const>const</Const> {f.name} = {f.function}
               </Definition>
-              <RunKitREPL onClick={createRunKit}>Run Code Here</RunKitREPL>
+              <RunKitREPL
+                onClick={() =>
+                  createRunKit(
+                    runKitRef.current,
+                    fDefRef.current,
+                    altFDefRef.current,
+                    fAppRef.current,
+                    fLinkRef.current
+                  )
+                }
+              >
+                Run Code Here
+              </RunKitREPL>
             </>
           ) : (
             <>
@@ -73,7 +49,19 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
                   <Const>let</Const> {f.name} = {f.alternative}
                 </p>
               </div>
-              <RunKitREPL onClick={createRunKit}>Run Code Here</RunKitREPL>
+              <RunKitREPL
+                onClick={() =>
+                  createRunKit(
+                    runKitRef.current,
+                    fDefRef.current,
+                    altFDefRef.current,
+                    fAppRef.current,
+                    fLinkRef.current
+                  )
+                }
+              >
+                Run Code Here
+              </RunKitREPL>
             </>
           )}
         </FunctionWrapper>
