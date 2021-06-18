@@ -5,11 +5,11 @@ import { FunctionProps } from "../types/types";
 import { createRunKit } from "./Runkit";
 
 const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
-  const runKitRef = useRef<any>(); // a
-  const fDefRef = useRef<any>(); // b
-  const altFDefRef = useRef<any>(); // c
-  const fAppRef = useRef<any>(); // d
-  const fLinkRef = useRef<any>(); // e
+  const runKitRef = useRef(); // a
+  const fDefRef = useRef(); // b
+  const altFDefRef = useRef(); // c
+  const fAppRef = useRef(); // d
+  const fLinkRef = useRef(); // e
 
   return (
     <Container id={f.name}>
