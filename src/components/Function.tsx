@@ -17,10 +17,7 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
         <Bold>{f.name}</Bold> : : {f.type}
       </Type>
       <Description>{f.description}.</Description>
-      <Repl
-        className='embed'
-        style={{ display: loadRunkit ? "none" : "block" }}
-      >
+      <Repl style={{ display: loadRunkit ? "none" : "block" }}>
         <FunctionWrapper>
           {f.alternative === null ? (
             <>
@@ -33,14 +30,14 @@ const Function: React.FC<{ f: FunctionProps }> = ({ f }) => {
             </>
           ) : (
             <>
-              <div>
+              <Definition>
                 <p>
                   <Const>let</Const> {f.name} = {f.function}
                 </p>
                 <p>
                   <Const>let</Const> {f.name} = {f.alternative}
                 </p>
-              </div>
+              </Definition>
               <RunKitREPL onClick={() => setLoadRunkit((prev) => !prev)}>
                 Run Code Here
               </RunKitREPL>
@@ -128,10 +125,15 @@ const Repl = styled.div`
   background-color: #f6f8fa;
   border-radius: 0.125rem;
   padding: 0.5rem 1rem;
+  letter-spacing: 0.5px;
 `;
 
 const Definition = styled.p`
   width: 80%;
+
+  @media (max-width: 500px) {
+    width: 60%;
+  }
 `;
 
 const RunKitREPL = styled.div`
